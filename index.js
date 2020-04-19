@@ -1,5 +1,6 @@
 import { visualizeRawData, visualizeAggregatedData } from './canvas.js';
 import { calculateCorrelation } from './correlate.js';
+import { handleRecorder } from './recorder.js';
 
 const canvas = document.querySelector('.visualizer');
 const canvas2 = document.querySelector('.visualizer2');
@@ -24,6 +25,8 @@ function handleStream(stream) {
     visualizeAggregatedData(canvas4, stream, 2048, 'frequency');
     
     computeCorrelation(stream);
+
+    handleRecorder(stream);
 }
 
 function computeCorrelation(stream) {

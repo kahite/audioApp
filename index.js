@@ -2,10 +2,13 @@ import { visualizeRawData, visualizeAggregatedData } from './canvas.js';
 import { calculateCorrelation } from './correlate.js';
 import { handleRecorder } from './recorder.js';
 
+const audio = document.querySelector('audio');
 const canvas = document.querySelector('.visualizer');
 const canvas2 = document.querySelector('.visualizer2');
 const canvas3 = document.querySelector('.visualizer3');
 const canvas4 = document.querySelector('.visualizer4');
+const canvas5 = document.querySelector('.visualizer5');
+const canvas6 = document.querySelector('.visualizer6');
 const correlation = document.querySelector('.correlation');
 
 if (navigator.mediaDevices
@@ -24,6 +27,11 @@ function handleStream(stream) {
     visualizeAggregatedData(canvas3, stream, 2048, 'timeDomain');
     visualizeAggregatedData(canvas4, stream, 2048, 'frequency');
     
+    audio.onplay = function () {
+        visualizeRawData(canvas5, audio.captureStream(), 2048, 'frequency');
+        visualizeAggregatedData(canvas6, audio.captureStream(), 2048, 'frequency');
+    };
+
     computeCorrelation(stream);
 
     handleRecorder(stream);

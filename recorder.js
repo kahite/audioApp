@@ -26,6 +26,7 @@ export function handleRecorder(stream) {
         chunks.push(e.data);
         let blob = new Blob(chunks, {type: 'audio/ogg; codecs=opus'});
         audio.src = URL.createObjectURL(blob);
+        chunks = [];
     };
 }
 

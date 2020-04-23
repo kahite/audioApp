@@ -1,8 +1,8 @@
 import { StreamAnalyzer } from './StreamAnalyzer.js';
 import { StreamVisualizer } from './StreamVisualizer.js';
-import { visualizeRawData, visualizeAggregatedData } from './canvas.js';
 import { calculateCorrelation } from './correlate.js';
 import { handleRecorder } from './recorder.js';
+import { StreamSelector } from './StreamSelector.js';
 
 const audio = document.querySelector('audio');
 const canvas = document.querySelector('.visualizer');
@@ -26,14 +26,14 @@ if (navigator.mediaDevices
 function handleStream(stream) {
     let streamAnalyzer = new StreamAnalyzer(stream, 2048);
 
-    let visualizerRawTimeDomain = new StreamVisualizer(streamAnalyzer, canvas);
-    visualizerRawTimeDomain.visualizeRawData('frequency');
+    let visualizerRawFrequency = new StreamVisualizer(streamAnalyzer, canvas);
+    visualizerRawFrequency.visualizeRawData('frequency');
 
-    let visualizerRawFrequency = new StreamVisualizer(streamAnalyzer, canvas2);
-    visualizerRawFrequency.visualizeRawData('timeDomain');
-
-    let visualizerAggregatedFrequency = new StreamVisualizer(streamAnalyzer, canvas3);
+    let visualizerAggregatedFrequency = new StreamSelector(streamAnalyzer, canvas2);
     visualizerAggregatedFrequency.visualizeAggregatedData('frequency');
+
+    let visualizerRawTimeDomain = new StreamVisualizer(streamAnalyzer, canvas3);
+    visualizerRawTimeDomain.visualizeRawData('timeDomain');
 
     let visualizerAggregatedTimeDomain = new StreamVisualizer(streamAnalyzer, canvas4);
     visualizerAggregatedTimeDomain.visualizeAggregatedData('timeDomain');
@@ -44,8 +44,8 @@ function handleStream(stream) {
         let visualizerAudioRawFrequency = new StreamVisualizer(streamAnalyzer, canvas5);
         visualizerAudioRawFrequency.visualizeRawData('frequency');
 
-
-        visualizeAggregatedData(canvas6, audio.captureStream(), 2048, 'frequency');
+        let visualizerAggregatedFrequency = new StreamSelector(streamAnalyzer, canvas6);
+        visualizerAggregatedFrequency.visualizeAggregatedData('frequency');
     };
 
     computeCorrelation(stream);

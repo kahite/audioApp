@@ -20,35 +20,35 @@ export class StreamVisualizer {
         function draw() {
             requestAnimationFrame(draw);
 
-            that.drawBackground(that.canvas);
+            that.drawBackground();
             
-            that.preDraw(that.canvas);
+            that.preDraw();
 
             let dataArray = that.streamAnalyzer.getRawData(type);
             if (!isRaw) {
                 dataArray = that.streamAnalyzer.getAggregatedData(type);
             }
-            that.drawPath(that.canvas, dataArray);
+            that.drawPath(dataArray);
             
-            that.postDraw(that.canvas);
+            that.postDraw();
         }
     }
 
-    drawBackground(canvas) {
-        const canvasCtx = canvas.getContext("2d");
+    drawBackground() {
+        const canvasCtx = this.canvas.getContext("2d");
 
         canvasCtx.fillStyle = 'rgb(200, 200, 200)';
-        canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+        canvasCtx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    preDraw(canvas) {
+    preDraw() {
 
     }
 
-    drawPath(canvas, dataArray) {
-        const canvasCtx = canvas.getContext("2d");
-        const WIDTH = canvas.width;
-        const HEIGHT = canvas.height;
+    drawPath(dataArray) {
+        const canvasCtx = this.canvas.getContext("2d");
+        const WIDTH = this.canvas.width;
+        const HEIGHT = this.canvas.height;
     
         canvasCtx.lineWidth = 1;
         canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
@@ -74,7 +74,7 @@ export class StreamVisualizer {
         canvasCtx.stroke();
     }
 
-    postDraw(canvas) {
+    postDraw() {
 
     }
 }

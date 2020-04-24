@@ -17,7 +17,7 @@ export class StreamAnalyzer {
         this.timeChunks = [];
         this.frequencyChunks = [];
 
-        for(let i = 0; i < this.bufferLength; i++) {
+        for(let i = 0; i < this.bufferLength; i++) { 
             this.timeChunks.push(0);
             this.frequencyChunks.push(0);
         }

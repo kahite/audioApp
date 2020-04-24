@@ -6,32 +6,54 @@
             .canvases {
                 white-space: nowrap;
             }
-            </style>
+
+            .panel {
+                display: none;
+            }
+
+            .panel.panel-display {
+                display: block;
+            }
+
+            .tab {
+                cursor: pointer;
+            }
+            
+        </style>
     </head>
     <body>
-        <div class="canvases">
-            <canvas class="visualizer" width=768 height=400></canvas>
-            <canvas class="visualizer2" width=768 height=400></canvas>
+        <div>
+            <a class="tab">Recorder</a>
+            <span> | </span>
+            <a class="tab">Visualizer</a>
         </div>
-        <div class="canvases">
-            <canvas class="visualizer3" width=768 height=400></canvas>
-            <canvas class="visualizer4" width=768 height=400></canvas>
+        <div class="panel panel-display">
+            <div>
+                <div>
+                    <button class="startButton">Start</button>
+                    <button class="stopButton">Stop</button>
+                </div>
+                <div>
+                    <audio controls="" muted="true" autoplay="true" loop="true"></audio>
+                </div>
+                <div class="canvases">
+                    <canvas class="visualizer5" width=768 height=400></canvas>
+                    <canvas class="visualizer6" width=768 height=400></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="canvases">
+                <canvas class="visualizer" width=768 height=400></canvas>
+                <canvas class="visualizer2" width=768 height=400></canvas>
+            </div>
+            <div class="canvases">
+                <canvas class="visualizer3" width=768 height=400></canvas>
+                <canvas class="visualizer4" width=768 height=400></canvas>
+            </div>
         </div>
         <div>
             <span>Correlation: <span class="correlation"></span></span>
-        </div>
-        <div>
-            <div>
-                <button class="startButton">Start</button>
-                <button class="stopButton">Stop</button>
-            </div>
-            <div>
-                <audio controls="" muted="true" autoplay="true" loop="true"></audio>
-            </div>
-            <div class="canvases">
-                <canvas class="visualizer5" width=768 height=400></canvas>
-                <canvas class="visualizer6" width=768 height=400></canvas>
-            </div>
         </div>
 
         <script src="index.js"></script>

@@ -1,18 +1,13 @@
-import { StreamAnalyzer } from './StreamAnalyzer.js';
-import { StreamVisualizer } from './StreamVisualizer.js';
 import { calculateCorrelation } from './correlate.js';
 import { handleRecorder } from './recorder.js';
-import { StreamSelector } from './StreamSelector.js';
+import { TabHandler } from './src/PanelHandler.js';
+import { Application } from './src/Application.js';
+import { VisualizerPanel } from './src/Panels/VisualizerPanel.js';
 
-const audio = document.querySelector('audio');
-const canvas = document.querySelector('.visualizer');
-const canvas2 = document.querySelector('.visualizer2');
-const canvas3 = document.querySelector('.visualizer3');
-const canvas4 = document.querySelector('.visualizer4');
-const canvas5 = document.querySelector('.visualizer5');
-const canvas6 = document.querySelector('.visualizer6');
 const correlation = document.querySelector('.correlation');
 
+let application = new Application();
+new TabHandler();
 if (navigator.mediaDevices
     && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia ({ audio: true })
@@ -23,31 +18,9 @@ if (navigator.mediaDevices
 }
 
 
+
 function handleStream(stream) {
-    let streamAnalyzer = new StreamAnalyzer(stream, 2048);
-
-    let visualizerRawFrequency = new StreamVisualizer(streamAnalyzer, canvas);
-    visualizerRawFrequency.visualizeRawData('frequency');
-
-    let visualizerAggregatedFrequency = new StreamSelector(streamAnalyzer, canvas2);
-    visualizerAggregatedFrequency.visualizeAggregatedData('frequency');
-
-    let visualizerRawTimeDomain = new StreamVisualizer(streamAnalyzer, canvas3);
-    visualizerRawTimeDomain.visualizeRawData('timeDomain');
-
-    let visualizerAggregatedTimeDomain = new StreamVisualizer(streamAnalyzer, canvas4);
-    visualizerAggregatedTimeDomain.visualizeAggregatedData('timeDomain');
-    
-    audio.onplay = function () {
-        let streamAnalyzer = new StreamAnalyzer(audio.captureStream(), 2048);
-
-        let visualizerAudioRawFrequency = new StreamVisualizer(streamAnalyzer, canvas5);
-        visualizerAudioRawFrequency.visualizeRawData('frequency');
-
-        let visualizerAggregatedFrequency = new StreamSelector(streamAnalyzer, canvas6);
-        visualizerAggregatedFrequency.visualizeAggregatedData('frequency');
-    };
-
+    new VisualizerPanel(stream);
     computeCorrelation(stream);
 
     handleRecorder(stream);

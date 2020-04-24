@@ -1,4 +1,4 @@
-import { StreamVisualizer } from "./StreamVisualizer";
+import { StreamVisualizer } from "./StreamVisualizer.js";
 
 export class StreamSelector extends StreamVisualizer {
     constructor(streamAnalyzer, canvas, type) {

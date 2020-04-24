@@ -1,6 +1,7 @@
-import { PanelHandler } from "./PanelHandler";
+import { PanelHandler } from "./Panels/PanelHandler";
 import { RecorderPanel } from "./Panels/RecorderPanel";
 import { VisualizerPanel } from "./Panels/VisualizerPanel";
+import { Recorder } from "./Recorder";
 import { MicStreamer } from "./Streamers/MicStreamer";
 
 export class Container {
@@ -8,6 +9,7 @@ export class Container {
         this.services = {
             'MicStreamer': new MicStreamer(),
             'PanelHandler': new PanelHandler(),
+            'Recorder': new Recorder(),
             'RecorderPanel': new RecorderPanel(),
             'VisualizerPanel': new VisualizerPanel(),
         };

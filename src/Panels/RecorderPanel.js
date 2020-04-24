@@ -3,7 +3,12 @@ import { StreamVisualizer } from '../StreamVisualizer.js';
 import { StreamSelector } from '../StreamSelector.js';
 
 export class RecorderPanel {
+    constructor() {
+        this.Recorder = null;
+    }
+
     init() {
+        this.Recorder.init();
         const audio = document.querySelector('audio');
         const canvas5 = document.querySelector('.visualizer5');
         const canvas6 = document.querySelector('.visualizer6');

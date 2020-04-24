@@ -1,7 +1,10 @@
-import { RecorderPanel } from "./Panels/RecorderPanel";
+export class PanelHandler {
+    constructor() {
+        this.RecorderPanel = null;
+        this.VisualizerPanel = null;
+    }
 
-export class TabHandler {
-    constructor () {
+    init (stream) {
         this.tabs = document.querySelectorAll('.tab');
         this.panels = document.querySelectorAll('.panel');
 
@@ -15,6 +18,7 @@ export class TabHandler {
             }
         }
 
-        new RecorderPanel();
+        this.RecorderPanel.init();
+        this.VisualizerPanel.init(stream);
     }
 }

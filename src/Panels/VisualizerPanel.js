@@ -2,7 +2,7 @@ import { StreamAnalyzer } from '../StreamAnalyzer.js';
 import { StreamVisualizer } from '../StreamVisualizer.js';
 
 export class VisualizerPanel {
-    constructor(stream) {
+    init(stream) {
         let streamAnalyzer = new StreamAnalyzer(stream, 2048);
 
         const canvas = document.querySelector('.visualizer');

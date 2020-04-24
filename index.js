@@ -1,21 +1,21 @@
 import { calculateCorrelation } from './correlate.js';
 import { handleRecorder } from './recorder.js';
-import { TabHandler } from './src/PanelHandler.js';
 import { Application } from './src/Application.js';
 import { VisualizerPanel } from './src/Panels/VisualizerPanel.js';
 
 const correlation = document.querySelector('.correlation');
 
 let application = new Application();
-new TabHandler();
-if (navigator.mediaDevices
-    && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia ({ audio: true })
-        .then(handleStream)
-        .catch(function(err) {
-            console.log('The following getUserMedia error occured: ' + err);
-        });
-}
+application.init();
+
+// if (navigator.mediaDevices
+//     && navigator.mediaDevices.getUserMedia) {
+//         navigator.mediaDevices.getUserMedia ({ audio: true })
+//         .then(handleStream)
+//         .catch(function(err) {
+//             console.log('The following getUserMedia error occured: ' + err);
+//         });
+// }
 
 
 

@@ -1,8 +1,15 @@
 import { StreamAnalyzer } from '../StreamAnalyzer.js';
 import { StreamVisualizer } from '../StreamVisualizer.js';
+// Regenerator runtime let us use async/await
+import regeneratorRuntime from "../../node_modules/regenerator-runtime/runtime";
 
 export class VisualizerPanel {
-    init(stream) {
+    constructor() {
+        this.MicStreamer = null
+    }
+
+    async init() {
+        let stream = await this.MicStreamer.getStreamPromise();
         let streamAnalyzer = new StreamAnalyzer(stream, 2048);
 
         const canvas = document.querySelector('.visualizer');

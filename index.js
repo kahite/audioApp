@@ -8,17 +8,6 @@ const correlation = document.querySelector('.correlation');
 let application = new Application();
 application.init();
 
-// if (navigator.mediaDevices
-//     && navigator.mediaDevices.getUserMedia) {
-//         navigator.mediaDevices.getUserMedia ({ audio: true })
-//         .then(handleStream)
-//         .catch(function(err) {
-//             console.log('The following getUserMedia error occured: ' + err);
-//         });
-// }
-
-
-
 function handleStream(stream) {
     new VisualizerPanel(stream);
     computeCorrelation(stream);

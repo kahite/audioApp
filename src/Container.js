@@ -1,10 +1,12 @@
 import { PanelHandler } from "./PanelHandler";
 import { RecorderPanel } from "./Panels/RecorderPanel";
 import { VisualizerPanel } from "./Panels/VisualizerPanel";
+import { MicStreamer } from "./Streamers/MicStreamer";
 
 export class Container {
     constructor() {
         this.services = {
+            'MicStreamer': new MicStreamer(),
             'PanelHandler': new PanelHandler(),
             'RecorderPanel': new RecorderPanel(),
             'VisualizerPanel': new VisualizerPanel(),

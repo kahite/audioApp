@@ -4,7 +4,7 @@ export class PanelHandler {
         this.VisualizerPanel = null;
     }
 
-    init (stream) {
+    init () {
         this.tabs = document.querySelectorAll('.tab');
         this.panels = document.querySelectorAll('.panel');
 
@@ -19,6 +19,6 @@ export class PanelHandler {
         }
 
         this.RecorderPanel.init();
-        this.VisualizerPanel.init(stream);
+        this.VisualizerPanel.init();
     }
 }

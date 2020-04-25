@@ -1,4 +1,4 @@
-export class StreamAnalyzer {
+export class AbstractAnalyzer {
     constructor(stream, fftSize) {
         let audioCtx;
         if(!audioCtx) {
@@ -14,6 +14,10 @@ export class StreamAnalyzer {
         const source = audioCtx.createMediaStreamSource(stream);
         source.connect(this.analyser);
 
+        this.initAggregatedData();
+    }
+    
+    initAggregatedData() {
         this.timeChunks = [];
         this.frequencyChunks = [];
 
@@ -48,21 +52,16 @@ export class StreamAnalyzer {
         }
         newData = newData / this.bufferLength;
 
+        this.computeAggregatedData(newData, type);
+
         if (type == 'frequency') {
-            this.frequencyChunks.push(newData);
-            if(this.frequencyChunks.length > this.bufferLength) {
-                this.frequencyChunks = this.frequencyChunks.slice(1);
-            }  
-    
             return this.frequencyChunks;
         }
         else {
-            this.timeChunks.push(newData);
-            if(this.timeChunks.length > this.bufferLength) {
-                this.timeChunks = this.timeChunks.slice(1);
-            }  
-    
             return this.timeChunks;
         }        
+    }
+
+    computeAggregatedData(newData, type) {
     }
 }

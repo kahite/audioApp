@@ -1,9 +1,9 @@
-import { StreamAnalyzer } from '../StreamAnalyzer.js';
+import { StreamAnalyzer } from '../Analyzer/StreamAnalyzer.js';
 import { StreamVisualizer } from '../StreamVisualizer.js';
 // Regenerator runtime let us use async/await
 import regeneratorRuntime from "../../node_modules/regenerator-runtime/runtime";
 
-export class VisualizerPanel {
+export class MicVisualizerPanel {
     constructor() {
         this.MicStreamer = null
     }

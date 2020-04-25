@@ -1,7 +1,8 @@
 export class PanelHandler {
     constructor() {
         this.RecorderPanel = null;
-        this.VisualizerPanel = null;
+        this.MicVisualizerPanel = null;
+        this.SelectorPanel = null;
     }
 
     init () {
@@ -19,6 +20,7 @@ export class PanelHandler {
         }
 
         this.RecorderPanel.init();
-        this.VisualizerPanel.init();
+        this.MicVisualizerPanel.init();
+        this.SelectorPanel.init();
     }
 }

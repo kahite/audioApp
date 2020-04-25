@@ -1,6 +1,7 @@
+import { MicVisualizerPanel } from "./Panels/MicVisualizerPanel";
 import { PanelHandler } from "./Panels/PanelHandler";
 import { RecorderPanel } from "./Panels/RecorderPanel";
-import { VisualizerPanel } from "./Panels/VisualizerPanel";
+import { SelectorPanel } from "./Panels/SelectorPanel";
 import { Recorder } from "./Recorder";
 import { MicStreamer } from "./Streamers/MicStreamer";
 
@@ -8,10 +9,11 @@ export class Container {
     constructor() {
         this.services = {
             'MicStreamer': new MicStreamer(),
+            'MicVisualizerPanel': new MicVisualizerPanel(),
             'PanelHandler': new PanelHandler(),
             'Recorder': new Recorder(),
             'RecorderPanel': new RecorderPanel(),
-            'VisualizerPanel': new VisualizerPanel(),
+            'SelectorPanel': new SelectorPanel(),
         };
         let keys = Object.keys(this.services);
 

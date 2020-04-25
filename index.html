@@ -26,20 +26,19 @@
             <a class="tab">Recorder</a>
             <span> | </span>
             <a class="tab">Visualizer</a>
+            <span> | </span>
+            <a class="tab">Selector</a>
         </div>
         <div class="panel panel-display">
             <div>
-                <div>
-                    <button class="startButton">Start</button>
-                    <button class="stopButton">Stop</button>
-                </div>
-                <div>
-                    <audio controls="" muted="true" autoplay="true" loop="true"></audio>
-                </div>
-                <div class="canvases">
-                    <canvas class="visualizer5" width=768 height=400></canvas>
-                    <canvas class="visualizer6" width=768 height=400></canvas>
-                </div>
+                <button class="startButton">Start</button>
+                <button class="stopButton">Stop</button>
+            </div>
+            <div>
+                <audio controls="" muted="true" autoplay="true"></audio>
+            </div>
+            <div class="canvases">
+                <canvas class="visualizer6" width=768 height=400></canvas>
             </div>
         </div>
         <div class="panel">
@@ -50,6 +49,21 @@
             <div class="canvases">
                 <canvas class="visualizer3" width=768 height=400></canvas>
                 <canvas class="visualizer4" width=768 height=400></canvas>
+            </div>
+        </div>
+        <div class="panel">
+            <div>
+                <form id="fileUploader">
+                    <input type="file" accept=".oga" />
+                    <input id="selectorSubmit" type="submit" value="Parse file" />
+                </form>
+            </div>
+            <!-- <div>
+                <audio controls="" muted="true" autoplay="true" loop="true"></audio>
+            </div> -->
+            <div class="canvases">
+                <canvas class="visualizer7" width=768 height=400></canvas>
+                <canvas class="visualizer8" width=768 height=400></canvas>
             </div>
         </div>
 

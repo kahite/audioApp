@@ -7,8 +7,9 @@ export class SelectionVisualizer extends StreamVisualizer {
     
         this.Correlator = new Correlator();
         this.selectionData = selectionData;
-        console.log(selectionData);
+        
         this.counter = 0;
+        this.counterStop = 0;
         this.spanCount = document.querySelector('.correlateCount');
         this.spanCorrelation = document.querySelector('.correlation');
     }
@@ -17,6 +18,11 @@ export class SelectionVisualizer extends StreamVisualizer {
         const canvasCtx = this.canvas.getContext("2d");
         const HEIGHT = this.canvas.height;
 
+        if(this.counterStop > 0) {
+            this.counterStop--;
+            return;
+        }
+
         let subArray = this.getSubArray(this.dataArray, this.dataArray.length - this.selectionData.length, this.selectionData.length);
         let correlation = this.Correlator.calculateCorrelation(
             this.selectionData, 
@@ -24,7 +30,7 @@ export class SelectionVisualizer extends StreamVisualizer {
         );
         this.spanCorrelation.textContent = correlation;
         if (correlation > 0.95) {
-            console.log(subArray);
+            this.counterStop = this.selectionData.length;
             this.counter++;
             this.spanCount.textContent = this.counter;
             canvasCtx.fillStyle = 'rgb(100, 0, 0, 0.1)';

@@ -20,7 +20,7 @@ export class PanelHandler {
         }
 
         this.RecorderPanel.init();
-        this.MicVisualizerPanel.init();
+        // this.MicVisualizerPanel.init();
         this.SelectorPanel.init();
     }
 }

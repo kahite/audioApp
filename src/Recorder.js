@@ -7,9 +7,10 @@ export class Recorder {
     }
 
     async init() {
-        const audio = document.querySelector('audio');
+        const audio = document.querySelector('.recorderAudio');
         const startButton = document.querySelector('.startButton');
         const stopButton = document.querySelector('.stopButton');
+        const correlateButton = document.querySelector('.correlateButton');
 
         let stream = await this.MicStreamer.getStreamPromise();
         const recorder = new MediaRecorder(stream);
@@ -28,6 +29,7 @@ export class Recorder {
                 startButton.disabled = false;
                 recorder.stop();
             }
+            correlateButton.style.display = 'inline';
         };
     
         let chunks = [];

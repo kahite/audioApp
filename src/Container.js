@@ -4,10 +4,12 @@ import { RecorderPanel } from "./Panels/RecorderPanel";
 import { SelectorPanel } from "./Panels/SelectorPanel";
 import { Recorder } from "./Recorder";
 import { MicStreamer } from "./Streamers/MicStreamer";
+import { Correlator } from "./Correlator";
 
 export class Container {
     constructor() {
         this.services = {
+            'Correlator': new Correlator(),
             'MicStreamer': new MicStreamer(),
             'MicVisualizerPanel': new MicVisualizerPanel(),
             'PanelHandler': new PanelHandler(),

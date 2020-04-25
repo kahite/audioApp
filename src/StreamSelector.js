@@ -1,8 +1,8 @@
 import { StreamVisualizer } from "./StreamVisualizer.js";
 
 export class StreamSelector extends StreamVisualizer {
-    constructor(streamAnalyzer, canvas, type) {
-        super(streamAnalyzer, canvas, type);
+    constructor(streamAnalyzer, canvas) {
+        super(streamAnalyzer, canvas);
 
         this.state = 'dragLeft';
     
@@ -62,5 +62,18 @@ export class StreamSelector extends StreamVisualizer {
         }
         canvasCtx.fillStyle = 'rgb(0, 0, 0, 0.3)';
         canvasCtx.fillRect(this.offsetDragX, 0, 1, HEIGHT);
+    }
+
+    getSelectedChunk() {
+        let data = [];
+        for (let i = 0; i < this.dataArray.length; i++) {
+            if (i > this.offsetDragRight) {
+                break;
+            }
+            else if (i > this.offsetDragLeft) {
+                data.push(this.dataArray[i]);
+            }
+        }
+        return data;
     }
 }

@@ -1,8 +1,8 @@
 export class StreamVisualizer {
-    constructor (streamAnalyzer, canvas, type) {
+    constructor (streamAnalyzer, canvas) {
         this.streamAnalyzer = streamAnalyzer;
         this.canvas = canvas;
-        this.type = type
+        this.dataArray = null;
     }
 
     visualizeRawData(type) {
@@ -28,6 +28,7 @@ export class StreamVisualizer {
             if (!isRaw) {
                 dataArray = that.streamAnalyzer.getAggregatedData(type);
             }
+            that.dataArray = dataArray;
             that.drawPath(dataArray);
             
             that.postDraw();
